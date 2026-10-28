@@ -1,14 +1,20 @@
 
+import "dotenv/config";
 import pg from "pg";
 
 const { Pool } = pg;
 
+if (!process.env.DATABASE_URL) {
+    throw new Error(
+        "DATABASE_URL is missing. Please configure your Neon connection string in the backend .env file."
+    );
+}
+
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "github_tracker",
-  password: process.env.DB_PASSWORD,
-  port: 5432,
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 export default pool;

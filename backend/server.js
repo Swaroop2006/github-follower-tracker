@@ -194,12 +194,10 @@ app.post("/api/auth/signup", async (req, res) => {
 
         const user = result.rows[0];
 
-        await createUserSession(req, user.id);
-
-        return res.status(201).json({
-            message: "Account created successfully",
-            user: publicUser(user),
-        });
+return res.status(201).json({
+    message: "Account created successfully. Please sign in.",
+    user: publicUser(user),
+});
     } catch (error) {
         if (error.code === "23505") {
             return res.status(409).json({

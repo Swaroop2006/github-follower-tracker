@@ -49,7 +49,7 @@ export default function SignUpPage() {
         throw new Error(data.message || "Unable to create account.");
       }
 
-      router.push("/dashboard");
+     router.push("/sign-in");
       router.refresh();
     } catch (err) {
       setError(
