@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Animated shiny gradient for the landing page heading */
+.shiny-heading {
+  color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    #64cefb 20%,
+    #a6e7ff 35%,
+    #ffffff 50%,
+    #a6e7ff 65%,
+    #64cefb 80%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-sweep 3s linear infinite;
+}
+
+@keyframes shiny-sweep {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: -150% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-heading {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
