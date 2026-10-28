@@ -27,7 +27,8 @@ type ApiError = {
   error?: string;
 };
 
-const API_BASE_URL = "http://localhost:3000/api/github";
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 const FOLLOWERS_PER_PAGE = 5;
 
 export default function Home() {
