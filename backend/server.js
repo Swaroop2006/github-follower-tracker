@@ -10,13 +10,31 @@ import pool from "./db.js";
 
 const app = express();
 
+const isProduction = process.env.NODE_ENV === "production";
+
+if (isProduction) {
+    app.set("trust proxy", 1);
+}
+
 // --------------------------------------------------
 // Middleware
 // --------------------------------------------------
 
+
+const allowedOrigins = [
+    "http://localhost:3001",
+    process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(
     cors({
-        origin: "http://localhost:3001",
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+
+            return callback(new Error("Not allowed by CORS"));
+        },
         credentials: true,
     })
 );
@@ -40,13 +58,13 @@ app.use(
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        cookie: {
-            httpOnly: true,
-            secure: false, // Local HTTP development only
-            sameSite: "lax",
-            path: "/",
-            maxAge: 1000 * 60 * 60 * 24 * 7,
-        },
+cookie: {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    path: "/",
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+},
     })
 );
 

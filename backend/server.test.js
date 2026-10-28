@@ -32,6 +32,15 @@ describe("GitHub Follower Tracker API", () => {
             });
 
         expect(response.status).toBe(201);
+
+        const signinResponse = await authenticatedRequest
+    .post("/api/auth/signin")
+    .send({
+        email: testEmail,
+        password: "TestPassword123"
+    });
+
+expect(signinResponse.status).toBe(200);
     });
 
     // Sign out and remove the temporary test account.
