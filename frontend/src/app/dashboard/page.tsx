@@ -95,7 +95,7 @@ export default function Home() {
       }
 
       const response = await fetch(
-        `${API_BASE_URL}/${encodeURIComponent(searchRequest.username)}`,
+       `${API_BASE_URL}/api/github/${encodeURIComponent(searchRequest.username)}`,
         { credentials: "include" }
       );
 
@@ -129,9 +129,9 @@ export default function Home() {
       }
 
       const response = await fetch(
-        `${API_BASE_URL}/${encodeURIComponent(
-          user.username
-        )}/followers?page=${currentPage}&limit=${FOLLOWERS_PER_PAGE}`,
+        `${API_BASE_URL}/api/github/${encodeURIComponent(
+    user.username
+)}/followers?page=${currentPage}&limit=${FOLLOWERS_PER_PAGE}`,
         { credentials: "include" }
       );
 
