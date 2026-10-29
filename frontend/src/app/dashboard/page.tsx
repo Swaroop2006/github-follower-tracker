@@ -43,7 +43,7 @@ export default function Home() {
 
     async function checkAuthentication() {
       try {
-        const response = await fetch("http://localhost:3000/api/auth/me", {
+        const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
           method: "GET",
           credentials: "include",
         });
@@ -234,7 +234,7 @@ export default function Home() {
 
               try {
                 const response = await fetch(
-                  "http://localhost:3000/api/auth/signout",
+                  `${API_BASE_URL}/api/auth/signout`,
                   {
                     method: "POST",
                     credentials: "include",
