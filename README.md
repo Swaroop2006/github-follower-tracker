@@ -5,7 +5,7 @@
 **Explore GitHub profiles, track follower stats, and browse paginated follower lists with each follower's own follower count.**
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit-success?style=for-the-badge)](https://github-follower-tracker-one.vercel.app/)
-[![Backend API](https://img.shields.io/badge/⚙️_Backend_API-Render-46E3B7?style=for-the-badge)](https://github-follower-tracker-37rs.onrender.com/)
+
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
